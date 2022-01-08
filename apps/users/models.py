@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
 
 GENDER_CHOICES = (
     ('male', 'male'),
@@ -10,7 +11,7 @@ GENDER_CHOICES = (
 
 
 class BaseModel(models.Model):
-    add_time = models.DateTimeField(verbose_name="added time", default=datetime.now)
+    add_time = models.DateTimeField(verbose_name="added time", default=timezone.now)
 
     class Meta:
         abstract = True
