@@ -10,7 +10,7 @@ GENDER_CHOICES = (
 
 
 class BaseModel(models.Model):
-    add_time = models.DateTimeField(verbose_name="added time", default=datetime.now())
+    add_time = models.DateTimeField(verbose_name="added time", default=datetime.now)
 
     class Meta:
         abstract = True
