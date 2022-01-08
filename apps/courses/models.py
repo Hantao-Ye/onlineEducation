@@ -7,7 +7,7 @@ from apps.users.models import BaseModel
 
 class Course(BaseModel):
     name = models.CharField(verbose_name='course name', max_length=50)
-    id = models.CharField(verbose_name='course id number', max_length=10)
+    course_id = models.CharField(verbose_name='course id number', max_length=10, unique=True)
 
     class Meta:
         verbose_name = 'course information'
