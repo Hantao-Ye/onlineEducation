@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.db import models
 
 from apps.users.models import BaseModel
@@ -36,6 +34,7 @@ class Lesson(BaseModel):
 class Video(BaseModel):
     lesson = models.ForeignKey(Lesson, verbose_name='lesson', on_delete=models.CASCADE)
     name = models.CharField(verbose_name='video name', max_length=100)
+    # file = models.FileField(verbose_name='video file', upload_to='course/videos/%Y/%m', max_length=200)
 
     class Meta:
         verbose_name = 'course video'
@@ -45,7 +44,7 @@ class Video(BaseModel):
 class CourseResource(BaseModel):
     course = models.ForeignKey(Course, verbose_name='course', on_delete=models.CASCADE)
     name = models.CharField(verbose_name='course resources', max_length=50)
-    file = models.FileField(verbose_name='course resources files', upload_to='course/resources/%Y/%m', max_length=200)
+    file = models.FileField(verbose_name='course resources file', upload_to='course/resources/%Y/%m', max_length=200)
 
     class Meta:
         verbose_name = 'course resources'

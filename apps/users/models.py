@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
@@ -18,11 +16,6 @@ class BaseModel(models.Model):
 
 
 class UserProfile(AbstractUser):
-    # nick_name = models.CharField(verbose_name='nick name', max_length=50, default='')
-    # birthday = models.DateField(verbose_name='birthday', null=True, blank=True)
-    # gender = models.CharField(verbose_name='gender', choices=GENDER_CHOICES, max_length=6)
-    # address = models.CharField(verbose_name='address', max_length=100, default='')
-    # mobile = models.CharField(verbose_name='mobile', max_length=11, unique=True)
     profile_image = models.ImageField(verbose_name='profile image', upload_to='profile_image/%Y/%m',
                                       default='profile_image/default.jpg')
 
@@ -32,3 +25,19 @@ class UserProfile(AbstractUser):
 
     def __str__(self):
         return self.email
+
+
+class EmailVerifyRecord(models.Model):
+    send_choices = (
+        ('register', 'register'),
+        ('forget', 'forget password')
+    )
+
+    verification_code = models.CharField('verification code', max_length=20)
+    email = models.EmailField('email', max_length=50)
+    send_type = models.CharField(choices=send_choices, max_length=10)
+    send_time = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        verbose_name = 'email verification'
+        verbose_name_plural = verbose_name
