@@ -8,6 +8,7 @@ media
 
 # Settings #
 onlineEducation/settings.py
+migrations/**
 
 # Backup files #
 *.bak
