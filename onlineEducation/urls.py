@@ -21,5 +21,5 @@ url = 'https://127.0.0.1:8000/'
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html')),
     path('admin/', admin.site.urls),
-    path('api/', include('apps.courses.urls')),
+    path('api/', include('apps.api.urls')),
 ]
