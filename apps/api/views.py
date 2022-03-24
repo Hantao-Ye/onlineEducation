@@ -1,10 +1,21 @@
-from django.shortcuts import render
-
-# Create your views here.
-
 from rest_framework import viewsets
 
 from apps.api.serializers import *
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserSerializer
+
+
+class EmailVerifyViewSet(viewsets.ModelViewSet):
+    queryset = EmailVerifyRecord.objects.all()
+    serializer_class = EmailVerifySerializer
+
+
+class LecturerViewSet(viewsets.ModelViewSet):
+    queryset = Lecturer.objects.all()
+    serializer_class = LecturerSerializer
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -12,21 +23,16 @@ class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
 
 
-class LecturerViewSet(viewsets.ModelViewSet):
-    queryset = Course.objects.all()
-    serializer_class = LecturerSerializer
-
-
 class LessonViewSet(viewsets.ModelViewSet):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
 
 
-class VideoViewSet(viewsets.ModelViewSet):
-    queryset = Video.objects.all()
-    serializer_class = VideoSerializer
+class LessonVideoViewSet(viewsets.ModelViewSet):
+    queryset = LessonVideo.objects.all()
+    serializer_class = LessonVideoSerializer
 
 
-class CourseResourceViewSet(viewsets.ModelViewSet):
-    queryset = CourseResource.objects.all()
-    serializer_class = CourseResourceSerializer
+class LessonResourceViewSet(viewsets.ModelViewSet):
+    queryset = LessonResource.objects.all()
+    serializer_class = LessonResourceSerializer

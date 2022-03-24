@@ -4,36 +4,50 @@ from apps.users.models import *
 from apps.courses.models import *
 
 
-class CourseSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Course
-        fields = ['name', 'course_id']
+        model = UserProfile
+        fields = ['id', 'username', 'first_name', 'email']
+
+
+class EmailVerifySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = EmailVerifyRecord
+        fields = ['verification_code', 'email', 'send_type', 'send_time']
 
 
 class LecturerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lecturer
-        fields = ['course', 'name', 'website']
+        fields = ['id', 'name', 'teacher_id', 'website']
+
+
+class CourseSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Course
+        fields = ['id', 'lecturer', 'name', 'course_id']
 
 
 class LessonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lesson
-        fields = ['course', 'name']
+        fields = ['id', 'course', 'name', 'lesson_id']
 
 
-class VideoSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Video
-        fields = ['course', 'name']
-
-
-class CourseResourceSerializer(serializers.ModelSerializer):
+class LessonVideoSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = CourseResource
-        fields = ['course', 'name', 'file']
+        model = LessonVideo
+        fields = ['id', 'lesson', 'name', 'file']
+
+
+class LessonResourceSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = LessonResource
+        fields = ['id', 'lesson', 'name', 'file']

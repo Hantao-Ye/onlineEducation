@@ -1,40 +1,40 @@
 from django.contrib import admin
 
-from apps.courses.models import Course, Lecturer, Lesson, Video, CourseResource
-
-
-class CourseAdmin(admin.ModelAdmin):
-    list_display = ['name', 'course_id']
-    search_fields = ['name', 'course_id']
-    list_filter = ['name', 'course_id']
+from apps.courses.models import *
 
 
 class LecturerAdmin(admin.ModelAdmin):
-    list_display = ['course', 'name', 'website']
-    search_fields = ['course', 'name', 'website']
-    list_filter = ['course', 'name', 'website']
+    list_display = ['name', 'teacher_id', 'website']
+    search_fields = ['name', 'teacher_id', 'website']
+    list_filter = ['name', 'teacher_id', 'website']
+
+
+class CourseAdmin(admin.ModelAdmin):
+    list_display = ['name', 'course_id', 'lecturer']
+    search_fields = ['name', 'course_id', 'lecturer']
+    list_filter = ['name', 'course_id', 'lecturer']
 
 
 class LessonAdmin(admin.ModelAdmin):
-    list_display = ['course', 'name']
-    search_fields = ['course', 'name']
-    list_filter = ['course', 'name']
+    list_display = ['course', 'name', 'lesson_id']
+    search_fields = ['course', 'name', 'lesson_id']
+    list_filter = ['course', 'name', 'lesson_id']
 
 
-class VideoAdmin(admin.ModelAdmin):
-    list_display = ['lesson', 'name']
-    search_fields = ['lesson', 'name']
-    list_filter = ['lesson', 'name']
+class LessonVideoAdmin(admin.ModelAdmin):
+    list_display = ['lesson', 'name', 'file']
+    search_fields = ['lesson', 'name', 'file']
+    list_filter = ['lesson', 'name', 'file']
 
 
-class CourseResourceAdmin(admin.ModelAdmin):
-    list_display = ['course', 'name', 'file']
-    search_fields = ['course', 'name', 'file']
-    list_filter = ['course', 'name', 'file']
+class LessonResourceAdmin(admin.ModelAdmin):
+    list_display = ['lesson', 'name', 'file']
+    search_fields = ['lesson', 'name', 'file']
+    list_filter = ['lesson', 'name', 'file']
 
 
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Lecturer, LecturerAdmin)
 admin.site.register(Lesson, LessonAdmin)
-admin.site.register(Video, VideoAdmin)
-admin.site.register(CourseResource, CourseResourceAdmin)
+admin.site.register(LessonVideo, LessonVideoAdmin)
+admin.site.register(LessonResource, LessonResourceAdmin)
