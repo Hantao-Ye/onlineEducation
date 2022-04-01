@@ -12,6 +12,8 @@ router.register(r'courses', views.CourseViewSet)
 router.register(r'lesson', views.LessonViewSet)
 router.register(r'lesson_video', views.LessonVideoViewSet)
 router.register(r'lesson_resource', views.LessonResourceViewSet)
+router.register(r'question', views.QuestionViewSet)
+router.register(r'quiz', views.QuizViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

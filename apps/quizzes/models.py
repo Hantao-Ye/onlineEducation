@@ -34,16 +34,6 @@ class Question(BaseModel):
         verbose_name_plural = verbose_name
 
 
-class QuestionAnswer(BaseModel):
-    question = models.ForeignKey(Question, verbose_name='question', on_delete=models.CASCADE)
-    answer = models.TextField(verbose_name='question answer')
-    answer_type = models.CharField(verbose_name='answer type', choices=ANSWER_TYPES, max_length=4)
-
-    class Meta:
-        verbose_name = 'question answer'
-        verbose_name_plural = verbose_name
-
-
 class Quiz(BaseModel):
     name = models.CharField(verbose_name='quiz name', max_length=150)
     questions = models.ManyToManyField(Question)

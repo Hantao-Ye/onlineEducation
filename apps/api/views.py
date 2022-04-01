@@ -36,3 +36,13 @@ class LessonVideoViewSet(viewsets.ModelViewSet):
 class LessonResourceViewSet(viewsets.ModelViewSet):
     queryset = LessonResource.objects.all()
     serializer_class = LessonResourceSerializer
+
+
+class QuestionViewSet(viewsets.ModelViewSet):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+
+
+class QuizViewSet(viewsets.ModelViewSet):
+    queryset = Quiz.objects.all()
+    serializer_class = QuizSerializer
