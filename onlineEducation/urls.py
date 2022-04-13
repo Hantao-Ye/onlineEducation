@@ -15,11 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import TemplateView
+from django.conf.urls import url
+from django.conf.urls.static import static, settings
 
-url = 'https://127.0.0.1:8000/'
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='index.html')),
-    path('admin/', admin.site.urls),
-    path('api/', include('apps.api.urls')),
-]
+    url(r'^admin/', admin.site.urls),
+    url(r'^api/', include('apps.api.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

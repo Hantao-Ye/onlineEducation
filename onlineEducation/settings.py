@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     # 3rd Party
     'rest_framework',
     'corsheaders',
+    'captcha',
 
     # Local Apps
     'apps.users.apps.UsersConfig',
@@ -132,7 +134,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'media'),
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = [
+    os.path.join(BASE_DIR, 'media'),
 ]
 
 # Simple UI
@@ -153,3 +161,10 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'http://localhost:8000',
 )
+
+# Captcha App
+
+if 'test' in sys.argv:
+    CAPTCHA_TEST_MODE = True
+CAPTCHA_FONT_SIZE = 52
+
